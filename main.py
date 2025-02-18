@@ -16,7 +16,7 @@ guessed_states = []
 while len(guessed_states) < 29:
     answer_state = screen.textinput(title=f"{len(guessed_states)}/29 states correct", prompt="What's another state's name ?")
     print(answer_state)
-    if answer_state == "Exit":
+    if answer_state.lower() == "exit":
         missing_states = [states for states in all_states if states not in guessed_states]
         new_data = bhalu.DataFrame(missing_states)
         new_data.to_csv("states_to_learn.csv")
@@ -33,10 +33,8 @@ while len(guessed_states) < 29:
         ycor = int(state_data.y.iloc[0])
         k.goto(xcor,ycor)
         k.write(answer_state)
-
-
-
-
+        
+    
 
 
 screen.exitonclick()
